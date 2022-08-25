@@ -16,6 +16,10 @@ Clone the project
 ```bash
   git clone https://github.com/vickyshaw29/vlog.git
 ```
+Go to the Backend Folder(Same for Client folder)
+```bash
+  npm install
+```
 
 Go to the project directory
 
