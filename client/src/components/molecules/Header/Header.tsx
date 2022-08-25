@@ -14,11 +14,11 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 const Header = () => {
   const router = useRouter();
-  const { logout,fetchUser } = useWunderGraph();
+  const { logout, fetchUser } = useWunderGraph();
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
     null
   );
-  const [user,setUser] = React.useState<any>(null);
+  const [user, setUser] = React.useState<any>(null);
   //@ts-ignore
   // const user =typeof window !== "undefined"? JSON?.parse(localStorage?.getItem("user") ): null;
   const classes = HeaderStyles();
@@ -38,15 +38,17 @@ const Header = () => {
 
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
-  
+
   //@ts-ignore`
-  useEffect(()=>{
-   const getUserDetails=async()=>{
-    const userDetails=await fetchUser();
-    setUser(userDetails)
-   }
-   getUserDetails();
-  },[user])
+  useEffect(() => {
+    const getUserDetails = async () => {
+      const userDetails = await fetchUser();
+      setUser(userDetails);
+    };
+    if (!user) {
+      getUserDetails();
+    }
+  }, [user]);
   return (
     <React.Fragment>
       <AppBar
@@ -59,12 +61,12 @@ const Header = () => {
           <Typography sx={{ ml: 1 }}>WunderTest</Typography>
           <Grid item container justifyContent="flex-end">
             {user && (
-                <Grid item>
-                  <IconButton onClick={(e: any) => handleClick(e)}>
-                    <Avatar src={user?.avatarUrl} sx={{ mr: 1 }} />
-                  </IconButton>
-                </Grid>
-              )}
+              <Grid item>
+                <IconButton onClick={(e: any) => handleClick(e)}>
+                  <Avatar src={user?.avatarUrl} sx={{ mr: 1 }} />
+                </IconButton>
+              </Grid>
+            )}
           </Grid>
         </Toolbar>
       </AppBar>
