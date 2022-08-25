@@ -1,0 +1,3 @@
+ mutation DeletePost($postId:String!) {
+    wunderTest_deletePost(postId: $postId) {}
+  }

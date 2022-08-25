@@ -1,0 +1,7 @@
+ mutation PostUpdate($postId:String!,$title:String!,$body:String!) {
+    wunderTest_updatePost(postId:$postId,title: $title, body: $body) {
+      id
+      title
+      body
+    }
+  }

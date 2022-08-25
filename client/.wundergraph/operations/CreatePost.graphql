@@ -1,0 +1,7 @@
+ mutation AddPost($title:String!,$body:String!) {
+    wunderTest_createPost(title: $title, body: $body) {
+      id
+      title
+      body
+    }
+  }
